@@ -1,5 +1,6 @@
 import { ListaCompras} from "./ListaCompras";
 import { Item } from "./Item";
+import {Ahorro} from "./Ahorro";
 import { useState } from "react";
 
 
@@ -35,28 +36,23 @@ export function Funciones (){
       setAhorro(parseInt(e.target.value))
     } //funcion que permite ver en el momento lo que estamos escribiendo
   }
-  const añadirCompra = () =>{
-    if(compra.trim() === ''){
-      alert('Debes agregar algo')
-      return
-    }
-    if(precio.trim() === ''){
-      alert('Debes agregar algo')
-      return
-    }
-
+  const añadirCompra = (e) =>{
+    e.preventDefault();
+  
     const formData = new FormData(e.target)//obtiene toda la informacion del formulario
     const nuevaCompra = {
       id: Date.now(), //funcion que retorna fecha y hora de creación
-      ahorro: formData.get('dinero'),
-      compra: formData.get('producto'),
-      precio: formData.get('cantidad'),
-      completada: false
+      compra: formData.get('producto')?.trim(),
+      precio: formData.get('cantidad')?.trim()
     }
-    
+    if(!compra || !precio){
+      alert('Debes agregar algo')
+      return
+    }
     const totalCompras = [nuevaCompra, ... compras]
     setCompras(totalCompras)
     setCompra('')
+    setPrecio('')
   }
 
   const borrarCompra = (id) =>{
@@ -65,20 +61,30 @@ export function Funciones (){
     })
     setCompras(compraActualizada)
   }
+  const añadirAhorro = () =>{
+    if(compra.trim() === ''){
+      alert('Debes agregar algo')
+      return
+    }
+    const formData = new FormData(e.target)//obtiene toda la informacion del formulario
+    const nuevoAhorro = {
+      ahorro: formData.get('dinero'),
+    }
+    setAhorro(nuevoAhorro)
 
+  }
 
   return (
     <div> 
       <ListaCompras
         handleChange = {handleChange}
         handleChange1={handleChange1}
-        handleChange3 = {handleChange3}
         añadirCompra = {añadirCompra}
         compra = {compra}
         precio = {precio}
-        ahorro = {ahorro}
       >
       </ListaCompras>
+      
       {compras.length>1 && ( //Boton vaciar se activa colo cuando hay mas de 2 tareas
         <button onClick={()=>setCompras([])}>Vaciar</button>
       )}

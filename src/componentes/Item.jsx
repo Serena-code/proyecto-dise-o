@@ -33,9 +33,8 @@ export function Item ({compra, borrarCompra,compras, setCompras}){
         </div>  
         :
         <div>
-            <h2>{compra.ahorro}</h2>
             <h2>{compra.compra}</h2>
-            <h3 className="cantidad">{compra.cantidad}</h3>     
+            <h3 className="cantidad">{compra.precio}</h3>     
             <button onClick={()=>borrarCompra(compra.id)} id="eliminar">Eliminar</button>
             <button onClick={()=>setEdit(!edit)}>Editar</button>       
         </div>
