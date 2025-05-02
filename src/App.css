@@ -1,63 +1,177 @@
-body{
+.App{
   display: flex;
   justify-content: center;
-  background-color: #007074;
-  font-family: inherit;
-  font-size: 15px;
-  color: #ffff;
-  margin:0px;
-  padding: 0px;
-  
 }
-p{
-  font-size: 20px;
+.contenedor-principal {
+  display: flex;
+  flex-direction: column; /* Apila los elementos verticalmente */
+  align-items: center; /* Centra horizontalmente el contenido */
+  padding: 20px;
+  background-color: #f4f4f4; /* Un fondo claro y neutro */
+  justify-content:center; /* Alinea los elementos al inicio (arriba) */
+  width: 150%;
+}
+
+body{
+  margin: 0; /* Elimina los márgenes predeterminados del body */
+  display: flex; /* Activa flexbox para centrar */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  
+  background-color: #827777; /* Un fondo gris claro para la página */
+}
+/* Estilos para el encabezado (título y monto principal) */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido del header */
+  margin-bottom: 10px;
+  width: 80%; /* Limita el ancho del header para que no sea demasiado grande */
+}
+
+.header h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el recuadro del monto principal */
+.header .amount-box {
+  display: flex;
+  background-color: #e0f7fa; /* Un color claro para el monto */
+  color: #00796b;
+  font-size: 2rem;
   font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 8px;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centra el texto del monto */
+  width: 100%; /* Ocupa todo el ancho del header */
+}
+
+/* Estilos para el contenedor del formulario de agregar gastos */
+.contenedor-gastos {
+  width: 80%; /* Ajusta el ancho del contenedor del formulario según sea necesario */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex; /* Para alinear los inputs y el botón */
+  gap: 10px;
+  align-items: center;
+  flex-direction: row; /* Coloca los inputs y el botón en fila */
+}
+
+.contenedor-gastos .form-input {
+  flex-grow: 1; /* Los inputs ocupan espacio disponible */
 }
 
 input{
-  background-color:aliceblue;
-  color:#000;
-  border-radius: 4px;
   padding: 10px;
-  margin: 10px;
-  border: 2px solid #6d6c6c;
-}
-button{
   margin:10px;
-  background-color: #093d3e;
-}
-.cantidad{
-  width: 40px;
-  margin:0px;
-}
-.form{
-  display: flex;
-  justify-content: center;
-}
-.listaCompras{
-  margin:10px;
-  padding: 25px;
-  width: 100%;
-  background-color: #f7e9e6c8;
-  border: 2px solid #6d6c6c;
-  border-radius: 8px;
-}
-.item{
-  margin:10px;
-  padding: 25px;
-  padding-top: 5px;
-  width: 100%;
-  background-color: #f7e9e6c8;
-  border: 2px solid #6d6c6c;
-  border-radius: 8px;
-  color:#000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+   /* Asegura que los inputs ocupen el ancho de su contenedor */
+  color: #333; /* Asegura que el texto ingresado sea visible */
+  background-color: #fff; /* Establece un fondo blanco para los inputs */
 }
 
-.actualizar{
-  margin:10px;
-  padding: 25px;
-  padding-top: 5px;
-  width: 100%;
-  border-radius: 8px;
-  color:#000;
+.contenedor-gastos button {
+  background-color: #28a745; /* Verde para agregar */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
 }
+
+.contenedor-gastos button:hover {
+  background-color: #1e7e34;
+}
+
+.contenedor-principal > div:last-child { /* Selecciona el contenedor de los items */
+  display: flex;
+  flex-direction: row; /* Disposición horizontal de las tarjetas */
+  gap: 15px; /* Espacio entre las tarjetas */
+  padding: 20px;
+  overflow-x: auto; /* Barra de desplazamiento horizontal */
+}
+.item {
+  background-color: #fff;
+  border: 1px solid #0a0a0a;
+  border-radius: 8px; /* Bordes más redondeados */
+  padding: 15px;
+  margin:10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  color: #333;
+  display: flex;
+  flex-direction: column; /* Apila el nombre/precio y las acciones */
+  width: 500px; /* Ancho fijo de cada tarjeta */
+  flex-shrink: 0; /* Evita que las tarjetas se encojan */
+}
+
+.item-nombre {
+  margin:5px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  word-break: break-word;
+  font-size: 1.1rem; /* Tamaño de fuente un poco mayor */
+}
+
+.item-precio {
+  margin:5px;
+  color: #777;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto; /* Empuja los botones hacia la parte inferior */
+  /* width: 100%; /* Asegura que los botones no se salgan al tener el mismo ancho que la tarjeta */
+}
+
+.item-actions button {
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  flex-grow: 1; /* Los botones ocupan el mismo ancho */
+  text-align: center;
+  min-width: 0; /* Permite que los botones se encojan si es necesario */
+}
+
+.item-actions button:first-child {
+  background-color: #007bff; /* Azul para Editar */
+}
+
+.item-actions button:last-child {
+  background-color: #dc3545; /* Rojo para Eliminar */
+}
+
+.item-actions button:hover {
+  opacity: 0.9;
+}
+
+/* Estilos para el botón "Vaciar" */
+.contenedor-principal button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+.contenedor-principal button:hover {
+  background-color: #d32f2f;
+}
+
+/* ... otros estilos ...

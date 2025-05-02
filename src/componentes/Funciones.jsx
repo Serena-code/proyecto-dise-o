@@ -7,9 +7,8 @@ import { useState } from "react";
 export function Funciones (){
   const [compra, setCompra] = useState('')
   const [precio, setPrecio] = useState('')
-  const [ahorro, setAhorro] = useState('')
   const [compras, setCompras] = useState([])
-  const [edit, setEdit] = useState(false)
+  const [ahorro, setAhorro] = useState('')
 
   const handleChange = (e) => {
     setCompra(e.target.value) //funcion que permite ver en el momento lo que estamos escribiendo
@@ -61,37 +60,35 @@ export function Funciones (){
     })
     setCompras(compraActualizada)
   }
-  const añadirAhorro = () =>{
-    if(compra.trim() === ''){
-      alert('Debes agregar algo')
-      return
-    }
-    const formData = new FormData(e.target)//obtiene toda la informacion del formulario
-    const nuevoAhorro = {
-      ahorro: formData.get('dinero'),
-    }
-    setAhorro(nuevoAhorro)
-
-  }
-
+  
   return (
-    <div> 
-      <ListaCompras
-        handleChange = {handleChange}
-        handleChange1={handleChange1}
-        añadirCompra = {añadirCompra}
-        compra = {compra}
-        precio = {precio}
-      >
-      </ListaCompras>
+    <div className="contenedor-principal">  
+      <div className="header">
+        <Ahorro
+        handleChange3={handleChange3}
+        ahorro = {ahorro}
+        >
+        </Ahorro>
+      </div>
+      <div className="contenedor-gastos">
+        <ListaCompras
+          handleChange = {handleChange}
+          handleChange1={handleChange1}
+          añadirCompra = {añadirCompra}
+          compra = {compra}
+          precio = {precio}
+        >
+        </ListaCompras>
+      </div>
+      
       
       {compras.length>1 && ( //Boton vaciar se activa colo cuando hay mas de 2 tareas
         <button onClick={()=>setCompras([])}>Vaciar</button>
       )}
-      <div>
+      <div className="item">
         {console.log(compras)}
         {compras.map(compra => (
-          <div class="item">
+          <div>
             <Item  key ={compra.id}
             id = {compra.id}
             compra = {compra}

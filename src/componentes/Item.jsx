@@ -32,11 +32,14 @@ export function Item ({compra, borrarCompra,compras, setCompras}){
             <button onClick={()=>actualizar(compra.id)}>Actualizar</button>
         </div>  
         :
-        <div>
-            <h2>{compra.compra}</h2>
-            <h3 className="cantidad">{compra.precio}</h3>     
-            <button onClick={()=>borrarCompra(compra.id)} id="eliminar">Eliminar</button>
-            <button onClick={()=>setEdit(!edit)}>Editar</button>       
+        <div className="item-details">
+            <span className="item-nombre">{compra.compra}</span>
+            <span className="item-precio">${compra.precio}</span>     
+            <div className = "item-actions ">
+                <button onClick={()=>borrarCompra(compra.id)} id="eliminar">Eliminar</button>
+                <button onClick={()=>setEdit(!edit)}>Editar</button>       
+            </div>
+            
         </div>
            
     )
