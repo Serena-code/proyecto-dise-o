@@ -1,8 +1,13 @@
 import React from "react";
 
 
-export function ListaCompras({handleChange,handleChange1,añadirCompra, compra, precio}){
+export function ListaCompras({handleChange,handleChange1,añadirCompra, compra, precio,bandera}){
     return(
+        bandera?
+        <div>
+
+        </div>
+        :
         <div className="listaCompras">
             <form onSubmit={añadirCompra}>
                 <div class="form">

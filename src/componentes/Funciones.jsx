@@ -9,6 +9,7 @@ export function Funciones (){
   const [precio, setPrecio] = useState('')
   const [compras, setCompras] = useState([])
   const [ahorro, setAhorro] = useState('')
+  const [bandera, setBandera] = useState(true)
 
   const handleChange = (e) => {
     setCompra(e.target.value) //funcion que permite ver en el momento lo que estamos escribiendo
@@ -61,11 +62,27 @@ export function Funciones (){
     setCompras(compraActualizada)
   }
   
+  
+  const añadirAhorro = (e) =>{
+    e.preventDefault()
+    const formData = new FormData(e.target)//obtiene toda la informacion del formulario
+    const nuevoMonto = {
+      ahorro: formData.get('dinero')?.trim()
+    }
+    if(!ahorro){
+      alert('Debes agregar algo')
+      return
+    }
+    console.log(ahorro)
+    setBandera(false)
+  }
   return (
     <div className="contenedor-principal">  
       <div className="header">
         <Ahorro
         handleChange3={handleChange3}
+        bandera = {bandera}
+        añadirAhorro={añadirAhorro}
         ahorro = {ahorro}
         >
         </Ahorro>
@@ -77,6 +94,7 @@ export function Funciones (){
           añadirCompra = {añadirCompra}
           compra = {compra}
           precio = {precio}
+          bandera = {bandera}
         >
         </ListaCompras>
       </div>

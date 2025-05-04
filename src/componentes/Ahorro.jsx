@@ -2,22 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 
-export function Ahorro({handleChange3,ahorro}){
-    const [bandera, setBandera] = useState(true)
-
-    const añadirAhorro = (e) =>{
-        e.preventDefault()
-        const formData = new FormData(e.target)//obtiene toda la informacion del formulario
-        const nuevoMonto = {
-        ahorro: formData.get('dinero')?.trim()
-        }
-        if(!ahorro){
-        alert('Debes agregar algo')
-        return
-        }
-        console.log(ahorro)
-        setBandera(false)
-    }
+export function Ahorro({handleChange3,bandera,añadirAhorro,ahorro}){
     
     return(
         bandera?
