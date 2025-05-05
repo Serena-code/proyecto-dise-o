@@ -56,7 +56,14 @@ export function Funciones (){
     }
     const totalCompras = [nuevaCompra, ... compras]
     setCompras(totalCompras)
-    setAhorroActual((prev) => prev - parseInt(precio))
+    if(ahorroActual>precio){
+      setAhorroActual((prev) => prev - parseInt(precio))
+    }else{
+      setCompra('')
+      setPrecio('')
+      alert('No se puede realizar la resta gasto supera ahorro')
+      return
+    }
     setCompra('')
     setPrecio('')
 
