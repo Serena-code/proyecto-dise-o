@@ -9,6 +9,7 @@ export function Funciones (){
   const [precio, setPrecio] = useState('')
   const [compras, setCompras] = useState([])
   const [ahorro, setAhorro] = useState('')
+  const [ahorroActual, setAhorroActual] = useState('')
   const [bandera, setBandera] = useState(true)
 
   const handleChange = (e) => {
@@ -25,6 +26,7 @@ export function Funciones (){
       setPrecio(parseInt(e.target.value))
     } //funcion que permite ver en el momento lo que estamos escribiendo
   }
+
   const handleChange3 = (e) => {
     if(e.target.value === ''){
       setAhorro('')
@@ -34,6 +36,7 @@ export function Funciones (){
       return
     }else{
       setAhorro(parseInt(e.target.value))
+      setAhorroActual(parseInt(e.target.value))
     } //funcion que permite ver en el momento lo que estamos escribiendo
   }
   const añadirCompra = (e) =>{
@@ -42,6 +45,8 @@ export function Funciones (){
     const formData = new FormData(e.target)//obtiene toda la informacion del formulario
     const nuevaCompra = {
       id: Date.now(), //funcion que retorna fecha y hora de creación
+      dia: formData.get('dias')?.trim(),
+      mes: formData.get('meses')?.trim(),
       compra: formData.get('producto')?.trim(),
       precio: formData.get('cantidad')?.trim()
     }
@@ -51,8 +56,10 @@ export function Funciones (){
     }
     const totalCompras = [nuevaCompra, ... compras]
     setCompras(totalCompras)
+    setAhorroActual((prev) => prev - parseInt(precio))
     setCompra('')
     setPrecio('')
+
   }
 
   const borrarCompra = (id) =>{
@@ -84,6 +91,7 @@ export function Funciones (){
         bandera = {bandera}
         añadirAhorro={añadirAhorro}
         ahorro = {ahorro}
+        ahorroActual = {ahorroActual}
         >
         </Ahorro>
       </div>

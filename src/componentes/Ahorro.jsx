@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 
-export function Ahorro({handleChange3,bandera,añadirAhorro,ahorro}){
+export function Ahorro({handleChange3,bandera,añadirAhorro,ahorro,ahorroActual}){
     
     return(
         bandera?
@@ -18,7 +18,7 @@ export function Ahorro({handleChange3,bandera,añadirAhorro,ahorro}){
         :
         <div className="header">
             <h1>Lista Gastos</h1>
-            <h2 class="amount-box">${ahorro}</h2>
+            <h2 class="amount-box">${ahorroActual}</h2>
         </div>
     )
 }

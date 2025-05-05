@@ -57,14 +57,20 @@ body{
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  display: flex; /* Para alinear los inputs y el botón */
+  display: flex;
+  flex-direction: column; /* Apila las filas */
   gap: 10px;
-  align-items: center;
-  flex-direction: row; /* Coloca los inputs y el botón en fila */
+  align-items: flex-start;
 }
 
-.contenedor-gastos .form-input {
-  flex-grow: 1; /* Los inputs ocupan espacio disponible */
+.fila {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.fila input {
+  flex: 1;
+  min-width: 100px;
 }
 
 input{
@@ -72,7 +78,6 @@ input{
   margin:10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-   /* Asegura que los inputs ocupen el ancho de su contenedor */
   color: #333; /* Asegura que el texto ingresado sea visible */
   background-color: #fff; /* Establece un fondo blanco para los inputs */
 }

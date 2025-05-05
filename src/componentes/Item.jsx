@@ -33,6 +33,7 @@ export function Item ({compra, borrarCompra,compras, setCompras}){
         </div>  
         :
         <div className="item-details">
+        <span className="item-nombre">📅 {compra.dia}/{compra.mes}</span>
             <span className="item-nombre">{compra.compra}</span>
             <span className="item-precio">${compra.precio}</span>     
             <div className = "item-actions ">
