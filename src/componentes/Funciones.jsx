@@ -68,14 +68,14 @@ export function Funciones (){
     setPrecio('')
 
   }
-  /*implementar a futuro
+  
   const borrarCompra = (id) =>{
     const compraActualizada = compras.filter(compra =>{
       return compra.id != id
     })
     setCompras(compraActualizada)
   }
-  */
+  
   
   const añadirAhorro = (e) =>{
     e.preventDefault()
@@ -95,12 +95,13 @@ export function Funciones (){
       {compras.length>1 && ( //Boton vaciar se activa colo cuando hay mas de 2 tareas
         <button onClick={()=>setCompras([])}>Vaciar</button>
       )}
+      borrarCompra = {borrarCompra}
+    setCompras={setCompras}
   */
 
-  /* agregar a item
-  borrarCompra = {borrarCompra}
-  setCompras={setCompras}
-  */
+  
+  
+
   return (
     <div className="contenedor-principal">  
       <div className="header">
@@ -132,7 +133,9 @@ export function Funciones (){
             <Item  key ={compra.id}
             id = {compra.id}
             compra = {compra}
+            borrarCompra={borrarCompra}
             compras = {compras}
+            setCompras={setCompras}
             ></Item>
           </div>
         ))}

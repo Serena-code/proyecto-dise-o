@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-export function Item ({compra, borrarCompra,compras, setCompras}){
+export function Item ({compra,borrarCompra,compras,setCompras}){
     const[nuevoTexto,setNuevoTexto] = useState("")
     const[nuevaCantidad,setNuevaCantidad] = useState(1)
     const[edit,setEdit] = useState(false)
@@ -33,21 +33,21 @@ export function Item ({compra, borrarCompra,compras, setCompras}){
         :
 
     */
-   /*
-    <div className = "item-actions ">
-        <button onClick={()=>borrarCompra(compra.id)} id="eliminar">Eliminar</button>
-        <button onClick={()=>setEdit(!edit)}>Editar</button>       
-        </div>
-    implementar a futuro en el return.
-     */
+
+    /*button onClick={()=>setEdit(!edit)}>Editar</button>  */
 
     return(
-        
-        <div className="item-details">
-            <span className="item-nombre">📅 {compra.dia}/{compra.mes}</span>
-            <span className="item-nombre">{compra.compra}</span>
-            <span className="item-precio">${compra.precio}</span>     
+        <div>
+            <div className="item-details">
+                <span className="item-nombre">📅 {compra.dia}/{compra.mes}</span>
+                <span className="item-nombre">{compra.compra}</span>
+                <span className="item-precio">${compra.precio}</span>     
+            </div>
+            <div className = "item-actions ">
+                <button onClick={()=>borrarCompra(compra.id)} id="eliminar">Eliminar</button>     
+            </div>
         </div>
+        
            
     )
 }

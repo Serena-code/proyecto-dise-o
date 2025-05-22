@@ -137,15 +137,14 @@ input{
   margin-bottom: 15px;
 }
 
-/*
+
 .item-actions {
   display: flex;
   gap: 8px;
   margin-top: auto; /* Empuja los botones hacia la parte inferior */
-  /* width: 100%; /* Asegura que los botones no se salgan al tener el mismo ancho que la tarjeta 
+  width: 100%; /* Asegura que los botones no se salgan al tener el mismo ancho que la tarjeta */
 }
-  */
-/*
+
 .item-actions button {
   color: white;
   border: none;
@@ -153,22 +152,23 @@ input{
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
-  flex-grow: 1; /* Los botones ocupan el mismo ancho 
+  flex-grow: 1; /* Los botones ocupan el mismo ancho */
   text-align: center;
-  min-width: 0; /* Permite que los botones se encojan si es necesario
+  min-width: 0; /* Permite que los botones se encojan si es necesario*/
 }
 
 .item-actions button:first-child {
-  background-color: #007bff; /* Azul para Editar 
+  background-color: #007bff; /* Azul para Editar */
 }
 
 .item-actions button:last-child {
-  background-color: #dc3545; /* Rojo para Eliminar 
+  background-color: #dc3545; /* Rojo para Eliminar */
 }
 
 .item-actions button:hover {
   opacity: 0.9;
 }
+
 
 /* Estilos para el botón "Vaciar" 
 .contenedor-principal button {
