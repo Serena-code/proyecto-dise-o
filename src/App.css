@@ -1,32 +1,37 @@
-.App{
+.App {
   display: flex;
   justify-content: center;
 }
+
 .contenedor-principal {
   display: flex;
-  flex-direction: column; /* Apila los elementos verticalmente */
-  align-items: center; /* Centra horizontalmente el contenido */
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  background-color: #f4f4f4; /* Un fondo claro y neutro */
-  justify-content:center; /* Alinea los elementos al inicio (arriba) */
-  width: 150%;
+  background-color: #f4f4f4;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-body{
-  margin: 0; /* Elimina los márgenes predeterminados del body */
-  display: flex; /* Activa flexbox para centrar */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  
-  background-color: #827777; /* Un fondo gris claro para la página */
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #827777;
+  min-height: 100vh;
 }
-/* Estilos para el encabezado (título y monto principal) */
+
+/* Header */
 .header {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra el contenido del header */
+  align-items: center;
   margin-bottom: 10px;
-  width: 80%; /* Limita el ancho del header para que no sea demasiado grande */
+  width: 90%;
+  max-width: 600px;
 }
 
 .header h1 {
@@ -34,10 +39,9 @@ body{
   margin-bottom: 10px;
 }
 
-/* Estilos para el recuadro del monto principal */
 .header .amount-box {
   display: flex;
-  background-color: #e0f7fa; /* Un color claro para el monto */
+  background-color: #e0f7fa;
   color: #00796b;
   font-size: 2rem;
   font-weight: bold;
@@ -45,20 +49,21 @@ body{
   border-radius: 8px;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Centra el texto del monto */
-  width: 100%; /* Ocupa todo el ancho del header */
+  text-align: center;
+  width: 100%;
 }
 
-/* Estilos para el contenedor del formulario de agregar gastos */
+/* Formulario */
 .contenedor-gastos {
-  width: 80%; 
+  width: 90%;
+  max-width: 600px;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   display: flex;
-  flex-direction: column; /* Apila las filas */
+  flex-direction: column;
   gap: 10px;
   align-items: flex-start;
 }
@@ -67,82 +72,87 @@ body{
   display: flex;
   gap: 10px;
   width: 100%;
+  flex-wrap: wrap;
 }
+
 .fila input {
   flex: 1;
   min-width: 100px;
 }
 
-input{
+input {
   padding: 10px;
-  margin:10px;
+  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-  color: #333; /* Asegura que el texto ingresado sea visible */
-  background-color: #fff; /* Establece un fondo blanco para los inputs */
+  color: #333;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contenedor-gastos button {
-  background-color: #28a745; /* Verde para agregar */
+  background-color: #28a745;
   color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
+  width: 100%;
 }
 
 .contenedor-gastos button:hover {
   background-color: #1e7e34;
 }
 
-.contenedor-principal > div:last-child { /* Selecciona el contenedor de los items */
+/* Tarjetas de gastos */
+.contenedor-principal > div:last-child {
   display: flex;
-  flex-direction: row; /* Disposición horizontal de las tarjetas */
-  gap: 15px; /* Espacio entre las tarjetas */
+  flex-direction: row;
+  gap: 15px;
   padding: 20px;
-  overflow-x: auto; /* Barra de desplazamiento horizontal */
-  width: 500px;
+  overflow-x: auto;
+  width: 90%;
+  max-width: 600px;
+  box-sizing: border-box;
 }
+
 .item {
   background-color: #fff;
   border: 1px solid #0a0a0a;
   border-radius: 8px;
   padding: 15px;
-  margin: 10px;
+  margin: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: #333;
   display: flex;
   flex-direction: row;
-  min-width: 200px; /* 👈 Establece un ancho mínimo */
+  min-width: 200px;
   flex-shrink: 0;
-  white-space: nowrap; /* 👈 Evita el salto de línea */
-  gap: 10px; /* Espacio entre los elementos internos */
+  white-space: nowrap;
+  gap: 10px;
 }
 
 .item-nombre {
-  gap:8px;
-  margin:5px;
   font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 1.1rem;
   word-break: break-word;
-  font-size: 1.1rem; /* Tamaño de fuente un poco mayor */
+  padding:5px;
 }
 
 .item-precio {
-  gap:8px;
-  margin:5px;
   color: #777;
   font-size: 1rem;
-  margin-bottom: 15px;
+  padding:5px;
 }
 
-
+/* Botones dentro de la tarjeta */
 .item-actions {
   display: flex;
   gap: 8px;
-  margin-top: auto; /* Empuja los botones hacia la parte inferior */
-  width: 100%; /* Asegura que los botones no se salgan al tener el mismo ancho que la tarjeta */
+  margin-top: auto;
+  width: 100%;
 }
 
 .item-actions button {
@@ -152,39 +162,43 @@ input{
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
-  flex-grow: 1; /* Los botones ocupan el mismo ancho */
+  flex-grow: 1;
   text-align: center;
-  min-width: 0; /* Permite que los botones se encojan si es necesario*/
 }
 
 .item-actions button:first-child {
-  background-color: #007bff; /* Azul para Editar */
+  background-color: #007bff;
 }
 
 .item-actions button:last-child {
-  background-color: #dc3545; /* Rojo para Eliminar */
+  background-color: #dc3545;
 }
 
 .item-actions button:hover {
   opacity: 0.9;
 }
 
+/* RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+  .contenedor-principal {
+    padding: 10px;
+  }
 
-/* Estilos para el botón "Vaciar" 
-.contenedor-principal button {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  margin-top: 20px;
+  .header, .contenedor-gastos, .contenedor-principal > div:last-child {
+    width: 100%;
+  }
+
+  .item {
+    flex-direction: column;
+    white-space: normal;
+    min-width: 100%;
+  }
+
+  .item-actions {
+    flex-direction: column;
+  }
+
+  .item-actions button {
+    width: 100%;
+  }
 }
-
-.contenedor-principal button:hover {
-  background-color: #d32f2f;
-}
-
-
-*/
