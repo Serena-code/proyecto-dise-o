@@ -238,7 +238,8 @@ input{
     width: 100%;
     padding: 10px 10px;
     gap: 15px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+     
   }
 
   /* ✅ Aquí se fuerza tamaño fijo para activar scroll */
