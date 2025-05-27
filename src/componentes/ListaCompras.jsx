@@ -23,7 +23,9 @@ export function ListaCompras({handleChange,handleChange1,añadirCompra, compra, 
             <form onSubmit={añadirCompra}>
                 <div class="form">
                     <div class="fila">
+                        <label>Día</label>
                         <input type="text" value={dia} name="dias" readOnly></input>
+                        <label>Mes</label>
                         <input type="text" value={mes} name="meses" readOnly></input>
                     </div>
                     <div class="fila">
