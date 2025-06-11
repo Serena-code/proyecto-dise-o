@@ -20,7 +20,7 @@ export function Funciones (){
       setPrecio('')
     }else if (isNaN(e.target.value)){
       setPrecio('')
-      alert('Formato incorrecto')
+      alert('Atención: El valor ingresado no es válido. Solo se permiten números enteros positivos')
       return
     }else{
       setPrecio(parseInt(e.target.value))
@@ -32,7 +32,7 @@ export function Funciones (){
       setAhorro('')
     }else if (isNaN(e.target.value)){
       setAhorro('')
-      alert('Formato incorrecto')
+      alert('Atención: El valor ingresado no es válido. Solo se permiten números enteros positivos')
       return
     }else{
       setAhorro(parseInt(e.target.value))
@@ -51,7 +51,7 @@ export function Funciones (){
       precio: formData.get('cantidad')?.trim()
     }
     if(!compra || !precio){
-      alert('Debes agregar algo')
+      alert('Atención: El valor ingresado no es válido. No se permiten valores nulos')
       return
     }
     const totalCompras = [nuevaCompra, ... compras]
@@ -70,10 +70,21 @@ export function Funciones (){
   }
   
   const borrarCompra = (id) =>{
-    const compraActualizada = compras.filter(compra =>{
-      return compra.id != id
-    })
-    setCompras(compraActualizada)
+    const confirmado = window.confirm(
+     '⚠️ ¿Estás seguro de que deseas eliminar este gasto? Esta acción no se puede deshacer.'
+    )
+    if (confirmado){
+      const compraABorrar = compras.find(compra => compra.id === Number(id))
+      const compraActualizada = compras.filter(compra =>{
+        return compra.id != id
+      })
+      const montoGasto = Number(compraABorrar.precio)
+      const AhorroActual = Number(ahorroActual)
+      const nuevoAhorro =  montoGasto + AhorroActual
+      console.log(nuevoAhorro)
+      setAhorroActual(nuevoAhorro)
+      setCompras(compraActualizada)
+    }
   }
   
   
