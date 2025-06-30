@@ -239,7 +239,8 @@ const Ahorro = () => {
             <p style={{
                 fontSize: '3rem', // text-5xl
                 fontWeight: '800', // font-extrabold
-                marginBottom: '8px'
+                marginBottom: '8px',
+                color: ahorro < 0 ? '#ef4444' : 'white' // Change color to red if savings are negative
             }}>${ahorro.toFixed(2)}</p>
             <p style={{
                 fontSize: '0.875rem', // text-sm
@@ -288,32 +289,25 @@ const Gastos = () => {
             return;
         }
 
-        // Check if expense exceeds current savings
+        let newAhorro = ahorro - parsedMonto;
+
+        // Check if expense exceeds current savings (for notification purposes)
         if (ahorro !== null && parsedMonto > ahorro) {
             setNotificationModal({
                 isOpen: true,
-                title: 'Gasto Excede Ahorro',
-                message: `El monto del gasto ($${parsedMonto.toFixed(2)}) es mayor que tu ahorro actual ($${ahorro.toFixed(2)}). Este gasto no se restará de tu ahorro.`,
-                type: 'info' // Changed to info, not error, as it's a warning
+                title: '¡Ahorro Agotado!',
+                message: `El monto del gasto ($${parsedMonto.toFixed(2)}) es mayor que tu ahorro actual ($${ahorro.toFixed(2)}). Tu ahorro ahora es negativo: $${newAhorro.toFixed(2)}.`,
+                type: 'info'
             });
-            // Still add the expense to the list, but don't deduct from ahorro
-            const newGasto = {
-                id: Date.now(), // Unique ID for the expense
-                description: descripcion,
-                amount: parsedMonto,
-                date: defaultDate,
-                timestamp: new Date().toISOString()
-            };
-            setGastos((prev) => [...prev, newGasto]); // Update local state for expenses
-            // Reset form and close modal
-            setDescripcion('');
-            setMonto('');
-            setIsModalOpen(false);
-            return;
+        } else {
+             setNotificationModal({
+                isOpen: true,
+                title: 'Gasto Añadido',
+                message: `Gasto de $${parsedMonto.toFixed(2)} añadido exitosamente. Tu ahorro actual es $${newAhorro.toFixed(2)}.`,
+                type: 'info'
+            });
         }
 
-        // Calculate new savings
-        const newAhorro = ahorro - parsedMonto;
 
         // Create new expense object
         const newGasto = {
@@ -333,12 +327,6 @@ const Gastos = () => {
             return updatedGastos;
         });
 
-        setNotificationModal({
-            isOpen: true,
-            title: 'Gasto Añadido',
-            message: `Gasto de $${parsedMonto.toFixed(2)} añadido exitosamente. Tu ahorro actual es $${newAhorro.toFixed(2)}.`,
-            type: 'info'
-        });
 
         // Reset form and close modal
         setDescripcion('');
